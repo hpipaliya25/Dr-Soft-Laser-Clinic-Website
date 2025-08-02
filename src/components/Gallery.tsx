@@ -182,8 +182,6 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
           </div>
         )}
 
-        {/* Regular Image Grid */}
-
         {/* CTA Section */}
         <div className="mt-16 text-center">
           <div className="bg-gradient-to-r from-gold-500 to-gold-600 text-white rounded-2xl p-8 max-w-2xl mx-auto">
