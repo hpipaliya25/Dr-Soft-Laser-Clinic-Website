@@ -63,66 +63,6 @@ const galleryCategories = {
         sessions: '7 sessions'
       }
     ]
-  },
-  'clinic': {
-    title: 'Our Toronto Clinic',
-    description: 'Take a tour of our state-of-the-art facility on Fleet Street',
-    images: [
-      {
-        id: 7,
-        title: 'Reception Area',
-        src: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop',
-        description: 'Welcome to our elegant reception area'
-      },
-      {
-        id: 8,
-        title: 'Treatment Room',
-        src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop',
-        description: 'Advanced laser equipment in comfortable settings'
-      },
-      {
-        id: 9,
-        title: 'Consultation Room',
-        src: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop',
-        description: 'Private consultation spaces'
-      },
-      {
-        id: 10,
-        title: 'Preparation Area',
-        src: 'https://images.unsplash.com/photo-1584758227087-8c8c86d7adb5?w=600&h=400&fit=crop',
-        description: 'Comfortable preparation area'
-      }
-    ]
-  },
-  'equipment': {
-    title: 'Advanced Laser Technology',
-    description: 'State-of-the-art diode laser equipment for safe and effective hair removal',
-    images: [
-      {
-        id: 11,
-        title: 'Diode Laser System',
-        src: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&h=400&fit=crop',
-        description: 'Advanced hair removal technology'
-      },
-      {
-        id: 12,
-        title: 'Cooling Technology',
-        src: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
-        description: 'Patient comfort cooling system'
-      },
-      {
-        id: 13,
-        title: 'Treatment Handpiece',
-        src: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=600&h=400&fit=crop',
-        description: 'Precision laser handpiece'
-      },
-      {
-        id: 14,
-        title: 'Safety Equipment',
-        src: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=600&h=400&fit=crop',
-        description: 'Safety and monitoring equipment'
-      }
-    ]
   }
 };
 
@@ -243,34 +183,6 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
         )}
 
         {/* Regular Image Grid */}
-        {(activeCategory === 'clinic' || activeCategory === 'equipment') && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryCategories[activeCategory].images.map((item) => (
-              <Card 
-                key={item.id} 
-                className="border-gold-200 shadow-lg overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
-                onClick={() => setSelectedImage(item)}
-              >
-                <CardContent className="p-0">
-                  <div className="relative">
-                    <ImageWithFallback
-                      src={item.src}
-                      alt={item.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity flex items-center justify-center">
-                      <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-medium text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-600">{item.description}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
