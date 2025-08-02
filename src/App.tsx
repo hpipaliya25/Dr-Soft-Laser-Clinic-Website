@@ -11,9 +11,7 @@ import { Gallery } from "./components/Gallery";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
-  const [selectedService, setSelectedService] = useState<
-    string | null
-  >(null);
+  const [selectedService, setSelectedService] = useState<string | null>(null);
 
   const handleNavigation = (page: string) => {
     setCurrentPage(page);
@@ -22,6 +20,7 @@ export default function App() {
 
   const handleServiceSelect = (serviceId: string) => {
     setSelectedService(serviceId);
+    setCurrentPage("service-details");
   };
 
   const handleBack = () => {
