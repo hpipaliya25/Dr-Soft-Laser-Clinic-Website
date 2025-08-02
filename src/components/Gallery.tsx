@@ -82,6 +82,10 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
     }
   };
 
+  const openModal = (image: any) => {
+    setSelectedImage(image);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gold-50 to-white">
       {/* Header */}
@@ -89,8 +93,8 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 onClick={onBack}
                 className="text-gold-700 hover:text-gold-800"
               >
@@ -99,7 +103,7 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
               </Button>
               <h1 className="text-3xl text-gray-900 font-medium">Gallery</h1>
             </div>
-            <Button 
+            <Button
               className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700"
               onClick={handleBookConsultation}
             >
@@ -148,7 +152,7 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
               <Card key={item.id} className="border-gold-200 shadow-lg overflow-hidden">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-2">
-                    <div className="relative">
+                    <div className="relative cursor-pointer" onClick={() => openModal({ src: item.before, title: item.title })}>
                       <ImageWithFallback
                         src={item.before}
                         alt={`${item.title} - Before`}
@@ -157,8 +161,11 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
                       <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-medium">
                         Before
                       </div>
+                      <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all flex items-center justify-center">
+                        <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100" />
+                      </div>
                     </div>
-                    <div className="relative">
+                    <div className="relative cursor-pointer" onClick={() => openModal({ src: item.after, title: item.title })}>
                       <ImageWithFallback
                         src={item.after}
                         alt={`${item.title} - After`}
@@ -166,6 +173,9 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
                       />
                       <div className="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-medium">
                         After
+                      </div>
+                      <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all flex items-center justify-center">
+                        <ZoomIn className="h-8 w-8 text-white opacity-0 group-hover:opacity-100" />
                       </div>
                     </div>
                   </div>
@@ -187,11 +197,11 @@ export function Gallery({ onBack, onNavigate }: GalleryProps) {
           <div className="bg-gradient-to-r from-gold-500 to-gold-600 text-white rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-medium mb-4">Ready to See Your Own Results?</h3>
             <p className="text-gold-100 mb-6">
-              Book your free consultation today and discover how our advanced laser hair removal 
+              Book your free consultation today and discover how our advanced laser hair removal
               can give you smooth, hair-free skin permanently.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 className="bg-white text-gold-600 hover:bg-gray-50"
                 onClick={handleBookConsultation}
               >
